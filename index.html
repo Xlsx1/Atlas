@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Interactive Financial Report — Atlas (Final)</title>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+
+<link rel="stylesheet" href="css/styles.css">
+
+</head>
+<body>
+<div class="app">
+  <aside class="sidebar" aria-label="القائمة الرئيسية">
+    <div class="logo">Atlas — Sheets</div>
+    <div class="subtext">اضغط على أي شيت لعرض بياناته</div>
+    <div class="filter">
+      <input class="search" id="searchInput" placeholder="ابحث عن شيت..." />
+      <button class="btn" id="toggleSample">تبديل</button>
+    </div>
+    <ul class="menu" id="menuList" role="listbox" aria-label="قائمة الشيتات"></ul>
+  </aside>
+  <main class="main" role="main">
+    <div class="header">
+      <div>
+        <div class="title" id="mainTitle">Loading...</div>
+        <div class="muted small" id="subtitle">Atlas — Excel sheet viewer</div>
+      </div>
+      <div class="periods" id="periods"></div>
+    </div>
+    <div class="table-wrap" role="region" aria-label="جدول مالي">
+      <table class="finance" id="financeTable">
+        <thead id="tableHead"></thead>
+        <tbody id="tableBody"></tbody>
+      </table>
+    </div>
+  </main>
+</div>
+<aside class="detail-panel" id="detailPanel" aria-hidden="true">
+  <div class="detail-head">
+    <h3 id="detailTitle">تفاصيل</h3>
+    <div style="display:flex;gap:8px;align-items:center">
+      <div class="export"><button class="btn" id="exportCsv">Export CSV</button></div>
+      <button class="btn close" id="closePanel">إغلاق</button>
+    </div>
+  </div>
+  <div class="detail-grid" id="detailGrid">
+    <div class="card" id="summaryCard">
+      <div class="muted">ملخّص القيمة</div>
+      <div class="kv"><div id="p0name">P1</div><div id="val0">-</div></div>
+      <div class="kv"><div id="p1name">P2</div><div id="val1">-</div></div>
+      <div class="kv"><div id="p2name">P3</div><div id="val2">-</div></div>
+      <div class="kv"><div id="p3name">P4</div><div id="val3">-</div></div>
+    </div>
+    <div class="card"><div class="muted">ملاحظات</div><div id="noteArea" style="margin-top:8px;color:#123">—</div></div>
+    <div class="card"><div class="muted">رسم بياني</div><div class="chart-wrap"><canvas id="miniChart"></canvas></div></div>
+    <div class="card accordion"><div class="acc-head" id="accHead"><div class="small">تفاصيل إضافية</div><div class="small muted" id="accToggle">عرض</div></div><div class="acc-body" id="accBody"><div id="extraDetails"><div class="small">Breakdown: <b id="breakdown">—</b></div><div style="height:10px"></div><div class="small">تغيّر سنوي: <b id="delta">—</b></div><div style="height:8px"></div><div class="small">ملاحظات تفصيلية: <span id="detailedNote">—</span></div></div></div></div>
+  </div>
+</aside>
+
+<script src="js/data.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>
